@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    openfoam:
+      container_name: openfoam
+      image: 09myimg/of7pv56
+      build: .
+      tty: true
+      environment:
+        DISPLAY: host.docker.internal:0
+      volumes:
+      - ~/.Xauthority:/root/.Xauthority
+      - ./work:/home/work
+      platform: linux/x86_64
+      
