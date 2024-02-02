@@ -1,1 +1,9 @@
-drivaerFastback/
+# package
+PyGeM/
+Smithers/
+
+# tutorial
+foam_tutorial/
+
+# mesh
+morphing/openfoam_mesh/
