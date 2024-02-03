@@ -14,34 +14,36 @@ $ exit
 
 ## テスト計算
 drivaer(自動車のベンチマークモデル)の実行。
-概略の所要時間は，8並列で，メッシング:20min，計算：2h20min。
+概略の所要時間は，n_cores:8，mesh_size:Mの条件で，メッシング:20min，計算：2h20min。
 
 ```bash
 $ cp $FOAM_TUTORIALS/incompressibleFluid/drivaerFastback/ . -r
 $ cd drivaerFastback/
-$ ./Allrun
+$ ./Allrun -c {n_cores} -m {mesh_size: S/M/L/XL}
 ```
 
 
 # PyGemのインストール
 モーフィングのためのライブラリ`PyGem`のインストール。
 ```bash
-$ git clone https://github.com/mathLab/PyGeM
-$ cd PyGem
-$ python setup.py install
-```
-追加ライブラリ
-```bash
-$ python -m pip install vtk
-```
+# vtk, smithesのインストール
+python -m pip install -y vtk
+python -m pip install -y git+https://github.com/mathLab/smithers.git
 
-`smithers`のインストール。
-```bash
-$ git clone https://github.com/mathLab/Smithers
-$ python setup.py install
+# pygemのインストール
+git clone https://github.com/mathLab/PyGeM
+cd PyGem
+python setup.py install
 ```
-
-OpenFoamHandlerへのパスが変更されているらしい。以下に直す
-```tutorial-6-ffd-rbf.ipynb
+チュートリアルのファイルから，OpenFoamHandlerへのパスが変更されているらしい。
+以下のように修正する。
+```python:tutorial-6-ffd-rbf.ipynb
 from smithers.io.openfoam.openfoamhandler import OpenFoamHandler
+```
+
+OpenFoamHandlerで読み取るにはascii形式でメッシュを出力しておく必要がある。
+FOAM_TUTORIALのケースだとbinaryになっているものがあるので，以下のように修正する。
+
+```controlDict
+writeFormat     ascii;
 ```
