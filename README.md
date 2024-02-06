@@ -47,3 +47,7 @@ FOAM_TUTORIALのケースだとbinaryになっているものがあるので，�
 ```controlDict
 writeFormat     ascii;
 ```
+
+#メモ
+そのままだとメモリのオーバーコミットが発生する
+vm.overcommit_memory = 1

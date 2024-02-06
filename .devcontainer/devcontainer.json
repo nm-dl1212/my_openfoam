@@ -12,7 +12,9 @@
 			"settings": {},
 			"extensions": [
 				"eamodio.gitlens",
-				"mhutchie.git-graph"
+				"mhutchie.git-graph",
+				"ms-python.python",
+				"ms-toolsai.jupyter"
 			]
 		}
 	},
