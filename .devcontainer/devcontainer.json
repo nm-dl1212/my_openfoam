@@ -18,5 +18,5 @@
 			]
 		}
 	},
-	"postCreateCommand": "echo container_build_done."
+	"postCreateCommand": "bash .devcontainer/setup.sh"
 }
