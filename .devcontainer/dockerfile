@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 # エイリアスを設定
 RUN echo 'alias python="/usr/bin/python3.10"' >>  ~/.bashrc
+
 # pipは下記で入れる
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 
@@ -19,6 +20,8 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 RUN pip install \
     ipykernel \
     vtk \
+    plotly \
+    nbformat \
     git+https://github.com/mathLab/smithers.git
 
 WORKDIR /home/openfoam
